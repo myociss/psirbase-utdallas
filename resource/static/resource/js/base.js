@@ -1,8 +1,8 @@
 $(document).ready(function(){
     $('.logo').hover(function(){
-        $(this).attr('src', '/static/psiRbase/images/logo-hover.png');
+        $(this).attr('src', '/static/resource/images/logo-hover.png');
     }, function(){
-        $(this).attr('src', '/static/psiRbase/images/logo.png');
+        $(this).attr('src', '/static/resource/images/logo.png');
     })
 
     setInterval(checkScroll, 100);

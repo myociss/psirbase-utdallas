@@ -5,19 +5,19 @@
 <head>
     <meta charset="UTF-8">
     <title>endo-siRBase</title>
-    <link rel="stylesheet" href="{% static 'psiRbase/css/reset.css' %}" type="text/css" />
-    <link rel="stylesheet" href="{% static 'psiRbase/css/base.css' %}" type="text/css" />
+    <link rel="stylesheet" href="{% static 'resource/css/reset.css' %}" type="text/css" />
+    <link rel="stylesheet" href="{% static 'resource/css/base.css' %}" type="text/css" />
     {% block extrahead %}{% endblock %}
 </head>
 
 <body>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-    <script src="{% static 'psiRbase/js/base.js' %}" type="text/javascript"></script>
-    <script src="{% static 'psiRbase/js/index.js' %}" type="text/javascript"></script>
+    <script src="{% static 'resource/js/base.js' %}" type="text/javascript"></script>
+    <script src="{% static 'resource/js/index.js' %}" type="text/javascript"></script>
     <div class="dna-gif"></div>
     <nav id="header">
-        <a href="{% url 'index' %}"><img class="logo" src="{% static 'psiRbase/images/logo.png' %}" /></a>
+        <a href="{% url 'index' %}"><img class="logo" src="{% static 'resource/images/logo.png' %}" /></a>
         <ul class="menu-links">
             <li class="menu-item"><a href="#search" class="menu-link">SEARCH</a></li>
             <li class="menu-item"><a href="#downloads" class="menu-link">DOWNLOADS</a></li>
@@ -25,7 +25,7 @@
             <li class="menu-item"><a href="#contact" class="menu-link">CONTACT</a></li>
         </ul>
         <div class="menu-links-mini">
-            <img class="menu-icon" src="{% static 'psiRbase/images/menu-icon.png' %}"/>
+            <img class="menu-icon" src="{% static 'resource/images/menu-icon.png' %}"/>
         </div>
     </nav>
     <div class="nav-pushdown"></div>

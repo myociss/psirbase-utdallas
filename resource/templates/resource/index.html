@@ -1,8 +1,8 @@
-{% extends 'psiRbase/base.html' %}
+{% extends 'resource/base.html' %}
 {% load static %}
 
 {% block extrahead %}
-    <link rel="stylesheet" href="{% static 'psiRbase/css/index.css' %}" type="text/css" />
+    <link rel="stylesheet" href="{% static 'resource/css/index.css' %}" type="text/css" />
 {% endblock %}
 
 {% block content %}
@@ -26,13 +26,13 @@
     </div>
 
     
-    {% include "psiRbase/search.html" %}
+    {% include "resource/search.html" %}
 </div>
 
 <div class="downloads" id="downloads">
     <h2>Downloads</h2>
 
-    {% include "psiRbase/downloads.html" %}
+    {% include "resource/downloads.html" %}
 </div>
 
 <div class="about section" id="about">

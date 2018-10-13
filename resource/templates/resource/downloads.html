@@ -15,9 +15,7 @@
             </div>
             <div class="download-info">
                 <div class="download-inner-column">
-                    {% with img_path="psiRbase/img/species/"|add:species.common_name|add:"Icon.png" %}
                     <img class="species-icon" src="/media/{{ species.icon }}" />
-                    {% endwith %}
                 </div>
                 <div class="download-inner-column">
                     {% if species.dataset.cDNA_data %}
