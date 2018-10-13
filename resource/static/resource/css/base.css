@@ -1,0 +1,135 @@
+html {
+    box-sizing: border-box;
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+body {
+    background-color: rgba(22,3,41,1);
+    font-family: Arial, sans-serif;
+    background-size: auto 100vh;
+}
+
+nav {
+    height: calc(6vh + 10px);
+    transition: all 0.75s ease;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: fixed;
+    top: 0;
+    padding-bottom: 20px;
+    background-color: rgba(0,0,0,0);
+    width: 100%;
+    padding: 0 17vw;
+}
+
+.nav-pushdown {
+    width: 100%;
+    display: block;
+    height: calc(6vh + 10px);
+}
+
+.navbar-scrolled {
+    transition: all 0.75s ease;
+    background:#333333;
+}
+
+.logo {
+    height: 6vh;
+    width: auto;
+    max-width: 100%;
+}
+
+.menu-item {
+    display: inline-block;
+}
+
+.menu-link {
+    text-decoration: none;
+    color: white;
+    font-size: 14px;
+    margin: 0 25px;
+    position: relative;
+}
+
+.menu-link:after{
+    content: '';
+    position: absolute;
+    width: 0; height: 1px;
+    display: block;
+    margin-top: 5px;
+    right: 0;
+    background: #fff;
+    transition: width .4s ease;
+    -webkit-transition: width .4s ease;
+  }
+   
+.menu-link:hover:after{
+    width: 100%;
+    left: 0;
+    background: #fff;
+}
+
+.menu-links-mini {
+    display: none;
+}
+
+.menu-icon {
+    height: 5vh;
+    width: auto;
+}
+
+@media only screen and (max-width: 1300px) {
+    nav {
+        padding: 0 13vw;
+    }
+}
+
+@media only screen and (max-width: 1200px) {
+    .logo {
+        width: 300px;
+    }
+
+    nav {
+        background:#333333;
+        flex-wrap: wrap;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 0 10vw;
+    }
+
+    .menu-links {
+        display: none;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+    }
+
+    .menu-link {
+        width: 100%;
+        margin: 10px 0px;
+        display: block;
+        /*border: 10px solid rgba(0,0,0,0);*/
+    }
+    
+    /*.menu-links-mini {
+        display: initial;
+    }*/
+}
+
+@media only screen and (max-width: 500px) {
+    .logo {
+        width: 250px;
+        height: auto;
+    }
+}
+
+@media only screen and (max-width: 400px) {
+    .logo {
+        width: 200px;
+        height: auto;
+    }
+}

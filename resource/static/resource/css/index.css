@@ -1,0 +1,311 @@
+body {
+    overflow-x:hidden;
+}
+
+.dna-gif {
+    background-image: url("../images/dna.gif");
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-size: cover;
+    background-position: center center;
+    opacity: 0.15;
+    z-index: -1;
+}
+
+.page-content {
+    width: 66%;
+    margin: auto;
+    margin-top: 1vh;
+}
+
+.subtitle {
+    border: solid 1px deepskyblue;
+    padding: 10px;
+    margin-top: 10px;
+    text-align: center;
+}
+
+.subtitle b {
+    font-size: 16px;
+    color: deepskyblue;
+    margin: 5px;
+}
+
+.subtitle p {
+    font-size: 14px;
+    color: white;
+    margin: 5px;
+}
+
+.search-description {
+    margin: 20px 0;
+    font-size: 12px;
+    color: white;
+}
+
+.search-description p {
+    padding: 3px 0;
+}
+
+.species-selection-container {
+    width: 75%;
+    float: left;
+    display: flex;
+    flex-shrink: 0;
+}
+
+.arrow-column {
+    flex: 6%;
+    flex-shrink: 0;
+}
+
+.arrow-icon {
+    width: 100%;
+    height: auto;
+    opacity: 0.25;
+    margin-top: 75%;
+}
+
+.arrow-icon-enabled:hover {
+    opacity: 1.0;
+    cursor: pointer;
+}
+
+.arrow-icon-enabled {
+    opacity: 0.80;
+}
+
+.species-column {
+    flex: 88%;
+}
+
+.species-group {
+    display: flex;
+}
+
+.icon-inner-column {
+    flex: 0 0 25%;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    padding: 5px;
+    color: white;
+}
+
+.sci-name {
+    font-style: italic;
+    font-size: 14px;
+}
+
+.common-name {
+    font-size: 10px;
+}
+
+/*.unselected-group {
+    display: none;
+}*/
+
+.species-icon {
+    width: 65%;
+    height: auto;
+    cursor: pointer;
+}
+
+.selected-species {
+    font-weight: bold;
+}
+
+.selected-species .species-icon {
+    filter: drop-shadow(0 0 8px white);
+}
+
+.search-types {
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+    font-size:12px;
+    float: left;
+    width: 25%;
+    color: white;
+}
+
+.search-types p {
+    background-color: rgba(32, 32, 223, 0.5);
+    padding: 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.search-types .selected {
+    background-color: rgba(32, 32, 223, 1);
+}
+
+.search-form {
+    display: flex;
+    clear: both;
+    width: 100%;
+    background-color: white;
+    border: 1px solid white;
+    height: 40px;
+    align-items: center;
+    color: purple;
+}
+
+.text-input {
+    font-size: 18px;
+}
+
+.text-input:focus {
+    outline: none;
+}
+
+.search-form p {
+    font-size: 18px;
+    margin-right: 10px;
+}
+
+.search-btn {
+    font-size: 24px;
+    color: white;
+    background-color: purple;
+    border: none;
+    text-transform: uppercase;
+    height: 38px;
+}
+
+.search-btn:hover {
+    background-color: black;
+}
+
+.search-errors {
+    margin-top: 10px;
+}
+
+.search-errors li {
+    font-size: 12px;
+    color: red;
+}
+
+.text-input {
+    flex: 1 0 auto;
+    border: none;
+}
+
+.radio-btn {
+    margin: 0px;
+    font-size: 24px;
+    padding-left: 5px;
+}
+
+label {
+    font-size: 18px;
+    margin-right: 5px;
+    margin-left: 5px;
+}
+
+.downloads {
+    color: white;
+}
+
+h2 {
+    margin: 20px 0px;
+    text-decoration: underline;
+    color: white;
+    font-size: 20px;
+}
+
+.downloads-container {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.downloads-column {
+    flex: 1 0 22%;
+    margin: 5px;
+    max-width: 22%;
+}
+
+.download-info {
+    display: flex;
+    width: 80%;
+}
+
+.download-inner-column {
+    width: 50%;
+}
+
+.download-inner-column a {
+    font-size: 12px;
+    text-decoration: none;
+    color: white;
+}
+
+.download-inner-column a:hover {
+    color: chartreuse;
+}
+
+/*.background p {
+    color: white;
+    font-size: 12px;
+}*/
+
+.section p {
+    /*float: left;*/
+    font-size: 12px;
+    color: white;
+    margin: 10px 0px;
+}
+
+.disclaimer p {
+    margin-bottom: 30px;
+}
+
+@media only screen and (max-width: 1300px){
+    .page-content {
+        width: 74%;
+    }
+}
+
+@media only screen and (max-width: 1100px) {
+    .downloads-column {
+        flex: 1 0 31%;
+        margin: 5px;
+        max-width: 31%;
+    }
+}
+
+@media only screen and (max-width: 1000px) {
+    .species-selection-container {
+        width: 100%;
+    }
+
+    .search-types {
+        flex-direction: row;
+        width: 60%;
+    }
+
+    .search-types p {
+        width: 50%;
+    }
+}
+
+@media only screen and (max-width: 1200px) {
+    .page-content {
+        width: 80%;
+    }
+}
+
+@media only screen and (max-width: 900px) {
+    .downloads-column {
+        flex: 1 0 48%;
+        margin: 5px;
+        max-width: 48%;
+    }
+}

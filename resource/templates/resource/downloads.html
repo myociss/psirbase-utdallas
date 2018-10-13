@@ -1,0 +1,44 @@
+{% load static %}
+
+{% block content %}
+
+<div class="downloads-container">
+    {% for species in species_list %}
+
+    {% if species.dataset %}
+
+    <div class="downloads-column">
+        <div class="download">
+            <div class="download-species-label">
+                <p class="sci-name">{{ species }}</p>
+                <p class="common-name">({{ species.common_name }})</p>
+            </div>
+            <div class="download-info">
+                <div class="download-inner-column">
+                    {% with img_path="psiRbase/img/species/"|add:species.common_name|add:"Icon.png" %}
+                    <img class="species-icon" src="/media/{{ species.icon }}" />
+                    {% endwith %}
+                </div>
+                <div class="download-inner-column">
+                    {% if species.dataset.cDNA_data %}
+                    <a href="/media/{{ species.dataset.cDNA_data }}">cDNA fasta</a><br/>
+                    {% endif %}
+                    {% if species.dataset.siRNA_data %}
+                    <a href="/media/{{ species.dataset.siRNA_data }}">siDNA fasta</a><br/>
+                    {% endif %}
+                    {% if species.dataset.ncRNA_data %}
+                    <a href="/media/{{ species.dataset.ncRNA_data }}">ncDNA fasta</a><br/>
+                    {% endif %}
+                    {% if species.dataset.genome_data %}
+                    <a href="/media/{{ species.dataset.genome_data }}">genome fasta</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
+    {% endfor %}
+</div>
+
+{% endblock %}

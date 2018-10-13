@@ -1,0 +1,15 @@
+{% extends 'psiRbase/base.html' %}
+
+{% load django_tables2 %}
+{% load static %}
+
+{% block extrahead %}
+    <link rel="stylesheet" href="{% static 'psiRbase/css/bootstrap.min.css' %}" type="text/css" />
+    <link rel="stylesheet" href="{% static 'psiRbase/css/results.css' %}" type="text/css" />
+{% endblock %}
+
+{% block content %}
+
+{% render_table table %}
+
+{% endblock %}

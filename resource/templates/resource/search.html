@@ -1,0 +1,61 @@
+{% load static %}
+
+{% block content %}
+<div class="species-selection-container">
+    <div class="arrow-column">
+        <img src="{% static 'psiRbase/images/arrow-left.png' %}" class="arrow-icon arrow-left" />
+    </div>    
+
+    <div class="species-column">
+    {% for species in species_list %}
+
+        {% if forloop.counter0|divisibleby:4 %}
+            <div class="species-group unselected-group">
+        {% endif %}
+
+        <div class="icon-inner-column" data-species-id="{{ species.id }}">
+            <img class="species-icon" src="/media/{{ species.icon }}" />
+            <p class="sci-name">{{ species }}<br/></p>
+            <p class="common-name">
+                {% if species.common_name %}{{ species.common_name }}{% endif %}
+            </p>
+        </div>
+
+        {% if forloop.counter0|add:"1"|divisibleby:4 or forloop.counter0 == species_list|length|add:"-1" %}
+            </div>
+        {% endif %}
+
+
+    {% endfor %}
+    </div>
+
+    <div class="arrow-column">
+        <img src="{% static 'psiRbase/images/arrow-right.png' %}" class="arrow-icon arrow-right" />
+    </div>
+
+</div>
+
+<div class="search-types">
+        <p class="search-type selected" data-search-type="siRNA sequence">
+            Type in siRNA sequence to find potential targets.
+        </p>
+        <p class="search-type" data-search-type="target gene">
+            Type in mRNA name to identify antisense siRNAs.
+        </p>
+    </div>
+        
+    <form action="search" method="GET" class="search-form">
+        <input type="hidden" id="species-id" name="species-id" value="{{species_list.first.id}}">
+        <input type="hidden" id="search-type" name="search-type" value="siRNA sequence">
+        <input class="text-input" id="sequence" type="text" name="sequence" autocomplete="off" placeholder="Enter siRNA sequence">
+        <p>Mismatches Allowed:</p>
+        <input class="radio-btn" type="radio" name="mismatches" value="0" checked>
+        <label for="0">0</label>
+        <input class="radio-btn" type="radio" name="mismatches" value="1">
+        <label for="1">1</label>
+        <input class="search-btn" type="submit" value="search">
+    </form>
+
+    {% include "psiRbase/errors.html" %}
+
+{% endblock %}

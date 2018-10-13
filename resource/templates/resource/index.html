@@ -1,0 +1,112 @@
+{% extends 'psiRbase/base.html' %}
+{% load static %}
+
+{% block extrahead %}
+    <link rel="stylesheet" href="{% static 'psiRbase/css/index.css' %}" type="text/css" />
+{% endblock %}
+
+{% block content %}
+
+<div class="subtitle">
+    <b>endo-siRBase</b>
+    <p>A multi-species developmental endo-siRNA repository and searchable database.</p>
+</div>
+
+<div id="search">
+    <div class="search-description">
+        <p>This database exclusively focuses on the endo-siRNA small RNA class by storing experimentally identified 
+            endo-siRNA from multi-species datasets.</p>
+        <br />
+        <p>The search tool offers two different functionailites.</p>
+        <br />
+        <p>1) Inputting an endo-siRNA sequence will return reverse complementary mRNA potential targets.</p>
+        <p>2) Inputting an mRNA name will return any documented antisense endo-siRNA.</p>
+		<br />
+		<p>To begin a query, first select the species, then specify the type of search.</p>
+    </div>
+
+    
+    {% include "psiRbase/search.html" %}
+</div>
+
+<div class="downloads" id="downloads">
+    <h2>Downloads</h2>
+
+    {% include "psiRbase/downloads.html" %}
+</div>
+
+<div class="about section" id="about">
+    <h2>About endo-siRBase</h2>
+    <p>Predominantly, there are three types of small, non-coding RNAs that act to 
+    inhibit gene expression: micro-RNA (miRNA), piwi-acting RNA (piRNA), and short 
+    interfering RNA (siRNA). All three are similar in that they are composed of 
+    approximately 20-30 nucleotide RNA fragments. Some even utilize the same protein 
+    machinery in the silencing process. Despite their surface similarities, however, 
+    they each have their own unique specific biogenesis and mechanisms of action that 
+    make them distinguishable from the others. The focus of this database is the 
+    endogenous class of siRNAs.</p>
+    <p>To identify putative endo-siRNAs, small RNA datasets were collected and processed using the following procedure.</p>
+    <p>1) Datasets containing small RNA sequences were obtained through literature and GEO searches. 
+    If no processed reads were available, raw reads were processed by removing adapters 
+    with trim_galore. Dataset sources and library descriptions are returned in searches. 
+    A complete list of small RNA library descriptions can be obtained at this link:
+    Dataset and Library Information</p>
+    <p>2) Sequences 18-28 nucleotides long were aligned to genomes using bowtie allowing 
+    one mismatch using parameters -v 1 -m 4 -a --best --strata. Reads that aligned to five 
+    or more genomic locations were discarded.</p>
+    <p>3) Reads with 1-4 hits were then aligned to a non-coding RNA index in order to 
+    identify and exclude currently annotated RNA.</p>
+    <p>4) Unmappable RNA reference sequences were then aligned to transcriptomes using the 
+    same bowtie parameters, and antisense reads were retained as endo-siRNA. Note that some 
+    datasets did not specifically state that their libraries were strand-specific; 
+    however, because the libraries we utilized all had 3' adapter sequences, we assumed 
+    strand information would be maintained, which allowed us to exclude sense reads. 
+    Removing sense reads is important because endo-siRNAs are known to silence in an 
+    antisense fashion.</p>
+
+    <p>Excepting sea urchins, genomic, non-coding RNA, and transcriptome annotations were 
+    obtained from ensembl and can be downloaded from the bulk downloads section.</p>
+
+    <p>endo-siRBase© is supported by Ovidiu Daescu's Geometric and Biomedical Computing Lab</p>
+    <p>endo-siRNA research, library construction, and analysis was completed by Kelly Daescu.</p>
+    <p>Database and Website Constrution was completed by the Computer Science senior design team of Aravind Ashok • Naveed Haque • Saivamshi Pasinkanti • Sandeep Shahi • Jamal Whitehead. 
+    Jamal Whitehead provided additional help with launch of this tool, and Megan Yociss 
+    streamlined code and improved database functionality.</p>
+    <p>© 2018, The University of Texas at Dallas</p>
+</div>
+
+<div class="contact section" id="contact">
+    <h2>Contact</h2>
+    <p>To report an error in the data or to submit general concerns, comments, and 
+    suggestions about the database, please contact us. We encourage authors of original 
+    related studies, not already included here, to send us your data for inclusion.</p>
+    <p>To integrate your small-RNA library sequences into the database, we will run your 
+    reads through our pipeline and merge your data with existing data so that the 
+    annotations are kept consistent. Please email us a gzipped version of the fasta 
+    sequences with the IDs in the following format:</p>
+        
+    <p>Author_Year_LibraryDescriptor_1<br/>
+    AAGGCTTACT<br/>
+    >Author_Year_LibraryDescriptor_2<br/>
+    TTGAACTTCA</p>
+        
+    <p>Example:<br/>
+    >Smith_2011_embryo_1<br/>
+    CCAGGTCATACCGAT</p>
+        
+    <p>Questions, comments, concerns, or dataset additions should be emailed to 
+    KellyDaescu@utdallas.edu and Ovidiu.Daescu@utdallas.edu.</p>
+</div>
+
+<div class="disclaimer section">
+    <h2>Disclaimer</h2>
+    <p>While we have made efforts to correctly represent the data in this database, we 
+    cannot exclude the possibility of errors. We are not able to make any warranty, either 
+    expressed or implied, with respect to the functioning and accuracy of this database. 
+    No responsibility is assumed by the authors and curators. We encourage users to use the 
+    source data returned by the search to validate the result, which can be found using 
+    information posted in the search return or using the following link:
+    Dataset and Library Information.</p>
+</div>
+
+{% endblock %}
