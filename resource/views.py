@@ -7,7 +7,7 @@ from .tables import SequenceTable
 def index(request):
     available_species = Species.objects.filter(available=True)
     context = {'species_list': available_species}
-    return render(request, 'psiRbase/index.html', context)    
+    return render(request, 'resource/index.html', context)    
 
 
 def search(request):
