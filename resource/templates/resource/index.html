@@ -17,7 +17,7 @@
         <p>This database exclusively focuses on the endo-siRNA small RNA class by storing experimentally identified 
             endo-siRNA from multi-species datasets.</p>
         <br />
-        <p>The search tool offers two different functionailites.</p>
+        <p>The search tool offers two different functionalities:</p>
         <br />
         <p>1) Inputting an endo-siRNA sequence will return reverse complementary mRNA potential targets.</p>
         <p>2) Inputting an mRNA name will return any documented antisense endo-siRNA.</p>
@@ -45,12 +45,16 @@
     they each have their own unique specific biogenesis and mechanisms of action that 
     make them distinguishable from the others. The focus of this database is the 
     endogenous class of siRNAs.</p>
-    <p>To identify putative endo-siRNAs, small RNA datasets were collected and processed using the following procedure.</p>
+    <p>To identify putative endo-siRNAs, small RNA datasets were collected and processed using the following procedure:</p>
     <p>1) Datasets containing small RNA sequences were obtained through literature and GEO searches. 
     If no processed reads were available, raw reads were processed by removing adapters 
     with trim_galore. Dataset sources and library descriptions are returned in searches. 
     A complete list of small RNA library descriptions can be obtained at this link:
-    Dataset and Library Information</p>
+    <br/>
+    {% if info_doc %}
+        <a href="{{ info_doc.document.url }}">Dataset and Library Information.</a><br/>
+    {% endif %}
+    </p>
     <p>2) Sequences 18-28 nucleotides long were aligned to genomes using bowtie allowing 
     one mismatch using parameters -v 1 -m 4 -a --best --strata. Reads that aligned to five 
     or more genomic locations were discarded.</p>
@@ -64,14 +68,14 @@
     Removing sense reads is important because endo-siRNAs are known to silence in an 
     antisense fashion.</p>
 
-    <p>Excepting sea urchins, genomic, non-coding RNA, and transcriptome annotations were 
-    obtained from ensembl and can be downloaded from the bulk downloads section.</p>
+    <p>Excepting sea urchins, genomic, non-coding RNA, and transcriptome annotations used for alignment 
+    were obtained from ensembl and can be downloaded from the bulk downloads section.</p>
 
     <p>endo-siRBase© is supported by Ovidiu Daescu's Geometric and Biomedical Computing Lab</p>
     <p>endo-siRNA research, library construction, and analysis was completed by Kelly Daescu.</p>
-    <p>Database and Website Constrution was completed by the Computer Science senior design team of Aravind Ashok • Naveed Haque • Saivamshi Pasinkanti • Sandeep Shahi • Jamal Whitehead. 
-    Jamal Whitehead provided additional help with launch of this tool, and Megan Yociss 
-    streamlined code and improved database functionality.</p>
+    <p>Database and Website Constrution was completed by Megan Yociss, and design 
+    was created by Aravind Ashok, Naveed Haque, Saivamshi Pasinkanti, Sandeep Shahi and Jamal Whitehead. 
+    Jamal Whitehead provided additional help with launch of this tool.</p>
     <p>© 2018, The University of Texas at Dallas</p>
 </div>
 
@@ -85,10 +89,12 @@
     annotations are kept consistent. Please email us a gzipped version of the fasta 
     sequences with the IDs in the following format:</p>
         
-    <p>Author_Year_LibraryDescriptor_1<br/>
+    <p>
+    >Author_Year_LibraryDescriptor_1<br/>
     AAGGCTTACT<br/>
     >Author_Year_LibraryDescriptor_2<br/>
-    TTGAACTTCA</p>
+    TTGAACTTCA
+    </p>
         
     <p>Example:<br/>
     >Smith_2011_embryo_1<br/>
