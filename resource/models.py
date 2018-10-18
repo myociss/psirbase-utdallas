@@ -52,3 +52,9 @@ class DataSet(models.Model):
 	siRNA_data = models.FileField(upload_to='data_sets/', blank=True)
 	ncRNA_data = models.FileField(upload_to='data_sets/', blank=True)
 	genome_data = models.FileField(upload_to='data_sets/', blank=True)
+
+class InformationDoc(models.Model):
+	def __str__(self):
+   		return self.document.url
+
+	document = models.FileField(upload_to='infodocs/', blank=False, null=False)

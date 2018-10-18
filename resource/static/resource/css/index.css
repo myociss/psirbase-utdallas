@@ -251,6 +251,16 @@ h2 {
     color: chartreuse;
 }
 
+.disclaimer a {
+    font-size: 12px;
+    text-decoration: none;
+    color: white;
+}
+
+.disclaimer a:hover {
+    color: chartreuse;
+}
+
 /*.background p {
     color: white;
     font-size: 12px;

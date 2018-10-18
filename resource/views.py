@@ -1,12 +1,16 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib import messages
-from .models import Species, Sequence
+from .models import Species, Sequence, InformationDoc
 from .tables import SequenceTable
 
 def index(request):
     available_species = Species.objects.filter(available=True)
-    context = {'species_list': available_species}
+    if InformationDoc.objects.exists():
+        doc = InformationDoc.objects.latest('id')
+    else:
+        doc = None
+    context = {'species_list': available_species, 'info_doc': doc}
     return render(request, 'resource/index.html', context)    
 
 

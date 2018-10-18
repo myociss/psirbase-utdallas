@@ -106,7 +106,11 @@
     No responsibility is assumed by the authors and curators. We encourage users to use the 
     source data returned by the search to validate the result, which can be found using 
     information posted in the search return or using the following link:
-    Dataset and Library Information.</p>
+    <br/>
+    {% if info_doc %}
+        <a href="{{ info_doc.document.url }}">Dataset and Library Information.</a><br/>
+    {% endif %}
+    </p>
 </div>
 
 {% endblock %}
