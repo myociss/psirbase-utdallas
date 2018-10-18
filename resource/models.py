@@ -18,7 +18,7 @@ class Species(models.Model):
 	common_name = models.CharField(max_length=50, null=True)
 	icon = models.FileField(upload_to='species_icons', default='species_icons/default-icon.png', null=False)
 	available = models.BooleanField(default=False, null=False)
-
+	genome_build = models.CharField(max_length=50, null=True, blank=True)
 
 	class Meta(object):
 		verbose_name_plural = 'Species'
