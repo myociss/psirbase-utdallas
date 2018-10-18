@@ -15,20 +15,20 @@
             </div>
             <div class="download-info">
                 <div class="download-inner-column">
-                    <img class="species-icon" src="/media/{{ species.icon }}" />
+                    <img class="species-icon" src="{{ species.icon.url }}" />
                 </div>
                 <div class="download-inner-column">
                     {% if species.dataset.cDNA_data %}
-                    <a href="/media/{{ species.dataset.cDNA_data }}">cDNA fasta</a><br/>
+                    <a href="{{ species.dataset.cDNA_data.url }}">cDNA fasta</a><br/>
                     {% endif %}
                     {% if species.dataset.siRNA_data %}
-                    <a href="/media/{{ species.dataset.siRNA_data }}">siDNA fasta</a><br/>
+                    <a href="{{ species.dataset.siRNA_data.url }}">siRNA fasta</a><br/>
                     {% endif %}
                     {% if species.dataset.ncRNA_data %}
-                    <a href="/media/{{ species.dataset.ncRNA_data }}">ncDNA fasta</a><br/>
+                    <a href="{{ species.dataset.ncRNA_data.url }}">ncRNA fasta</a><br/>
                     {% endif %}
                     {% if species.dataset.genome_data %}
-                    <a href="/media/{{ species.dataset.genome_data }}">genome fasta</a>
+                    <a href="{{ species.dataset.genome_data.url }}">genome fasta</a>
                     {% endif %}
                 </div>
             </div>

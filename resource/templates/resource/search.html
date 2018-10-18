@@ -14,7 +14,7 @@
         {% endif %}
 
         <div class="icon-inner-column" data-species-id="{{ species.id }}">
-            <img class="species-icon" src="/media/{{ species.icon }}" />
+            <img class="species-icon" src="{{ species.icon.url }}" />
             <p class="sci-name">{{ species }}<br/></p>
             <p class="common-name">
                 {% if species.common_name %}{{ species.common_name }}{% endif %}
