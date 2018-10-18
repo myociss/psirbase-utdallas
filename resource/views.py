@@ -15,7 +15,7 @@ def index(request):
 
 
 def search(request):
-    q = request.GET.get('sequence', '').upper()
+    q = request.GET.get('sequence', '')
     print(request.GET)
 
     if not q:
@@ -27,15 +27,16 @@ def search(request):
     mismatches = int(request.GET.get('mismatches'))
 
     if search_type == 'siRNA sequence':
-        accepted_chars = set('TGCAU')
+        accepted_chars = set('tgcauTGCAU')
         if any((c not in accepted_chars) for c in q):
             messages.error(request, 'Invalid character in sequence.')
             return redirect('index')
-        sequences = Sequence.objects.filter(species_id=species_id, rna_sequence=q, 
+        sequences = Sequence.objects.filter(species_id=species_id, rna_sequence=q.upper(), 
                         number_mismatches_allowed=mismatches)
     else:
         sequences = Sequence.objects.filter(species_id=species_id, target_gene=q,
                         number_mismatches_allowed=mismatches)
+    print(sequences)
     sequence_table = SequenceTable(sequences)
     sequence_table.paginate(page=request.GET.get('page', 1), per_page=25)
     return render(request, 'resource/results.html', {'table': sequence_table})
