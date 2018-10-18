@@ -6,3 +6,11 @@ body {
     width: 100%;
     margin: auto;
 }
+
+.even {
+    background-color: #ccc;
+}
+
+.odd {
+    background-color: white;
+}

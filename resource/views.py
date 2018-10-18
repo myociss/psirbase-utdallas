@@ -4,6 +4,7 @@ from django.contrib import messages
 from .models import Species, Sequence, InformationDoc
 from .tables import SequenceTable
 
+
 def index(request):
     available_species = Species.objects.filter(available=True)
     if InformationDoc.objects.exists():
@@ -36,7 +37,6 @@ def search(request):
     else:
         sequences = Sequence.objects.filter(species_id=species_id, target_gene=q,
                         number_mismatches_allowed=mismatches)
-    print(sequences)
     sequence_table = SequenceTable(sequences)
     sequence_table.paginate(page=request.GET.get('page', 1), per_page=25)
     return render(request, 'resource/results.html', {'table': sequence_table})
