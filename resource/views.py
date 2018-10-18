@@ -38,4 +38,4 @@ def search(request):
                         number_mismatches_allowed=mismatches)
     sequence_table = SequenceTable(sequences)
     sequence_table.paginate(page=request.GET.get('page', 1), per_page=25)
-    return render(request, 'psiRbase/results.html', {'table': sequence_table})
+    return render(request, 'resource/results.html', {'table': sequence_table})
