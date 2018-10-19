@@ -10,6 +10,9 @@
 
 {% block content %}
 
+{% load querystring from django_tables2 %}
+<a href="{% querystring '_export'='csv' %}">Download</a>
+
 {% render_table table %}
 
 {% endblock %}

@@ -3,6 +3,8 @@ from django.http import HttpResponse
 from django.contrib import messages
 from .models import Species, Sequence, InformationDoc
 from .tables import SequenceTable
+from django_tables2.config import RequestConfig
+from django_tables2.export.export import TableExport
 
 
 def index(request):
@@ -37,6 +39,13 @@ def search(request):
     else:
         sequences = Sequence.objects.filter(species_id=species_id, target_gene=q,
                         number_mismatches_allowed=mismatches)
+    
     sequence_table = SequenceTable(sequences)
     sequence_table.paginate(page=request.GET.get('page', 1), per_page=25)
+
+    RequestConfig(request).configure(sequence_table)
+    export_format = request.GET.get('_export', None)
+    if TableExport.is_valid_format(export_format):
+        exporter = TableExport(export_format, sequence_table)
+        return exporter.response('table.{}'.format(export_format))
     return render(request, 'resource/results.html', {'table': sequence_table})
