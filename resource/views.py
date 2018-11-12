@@ -35,10 +35,10 @@ def search(request):
             messages.error(request, 'Invalid character in sequence.')
             return redirect('index')
         sequences = Sequence.objects.filter(species_id=species_id, rna_sequence=q.upper(), 
-                        number_mismatches_allowed=mismatches)
+                        number_mismatches_allowed__lte=mismatches)
     else:
         sequences = Sequence.objects.filter(species_id=species_id, target_gene=q,
-                        number_mismatches_allowed=mismatches)
+                        number_mismatches_allowed__lte=mismatches)
     
     sequence_table = SequenceTable(sequences)
     sequence_table.paginate(page=request.GET.get('page', 1), per_page=25)

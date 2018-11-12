@@ -30,7 +30,7 @@ class Sequence(models.Model):
 	chromosome = models.CharField(max_length=50, verbose_name='Chr')
 	start = models.IntegerField()
 	stop = models.IntegerField()
-	sequence_id = models.CharField(max_length=50)
+	sequence_id = models.CharField(max_length=50, verbose_name='id')
 	rna_sequence = models.CharField(max_length=35, verbose_name='sequence')
 	source = models.CharField(max_length=40)
 	development_stage = models.CharField(max_length=50, verbose_name='stage')
